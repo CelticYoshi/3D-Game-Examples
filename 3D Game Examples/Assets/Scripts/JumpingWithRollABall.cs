@@ -9,8 +9,9 @@ public class JumpingWithRollABall : MonoBehaviour
     public bool IsOnGround = true;
     private float _horizontalInput;
     private float _forwardInput;
+    private bool _isAtCheckpoint = false;
     private Vector3 _startingPosition;
-    private Vector3 _endingPosition;
+    private Vector3 _checkpointPosition;
     private Rigidbody _playerRigidbody;
 
     // Start is called before the first frame update
@@ -19,7 +20,6 @@ public class JumpingWithRollABall : MonoBehaviour
         _playerRigidbody = GetComponent<Rigidbody>();
         Physics.gravity *= GravityModifier;
         _startingPosition = transform.position;
-        _endingPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -33,9 +33,17 @@ public class JumpingWithRollABall : MonoBehaviour
             _playerRigidbody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
             IsOnGround = false;
         }
+        
         if(transform.position.y < OutofBounds)
         {
-            transform.position = _startingPosition;
+            if(_isAtCheckpoint)
+            {
+                transform.position = _checkpointPosition;
+            }
+            else
+            {
+                transform.position = _startingPosition;
+            }
         }
     }
 
@@ -52,13 +60,31 @@ public class JumpingWithRollABall : MonoBehaviour
         {
             IsOnGround = true;
         }
+
+        if(collision.gameObject.CompareTag("Dead Zone"))
+        {
+            if(_isAtCheckpoint)
+            {
+                transform.position = _checkpointPosition;
+            }
+            else
+            {
+                transform.position = _startingPosition;
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Checkpoint"))
         {
-            _startingPosition = other.gameObject.transform.position;
+            _isAtCheckpoint = true;
+            _checkpointPosition = other.gameObject.transform.position;
+        }
+        if(other.gameObject.CompareTag("Endpoint"))
+        {
+            _isAtCheckpoint = false;
+            transform.position = _startingPosition;
         }
     }
 }
