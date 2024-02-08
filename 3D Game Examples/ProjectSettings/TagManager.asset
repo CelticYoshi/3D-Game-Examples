@@ -9,6 +9,7 @@ TagManager:
   - End Point
   - Endpoint
   - Dead Zone
+  - Collectible
   layers:
   - Default
   - TransparentFX
