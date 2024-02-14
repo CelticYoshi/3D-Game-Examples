@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float turnSpeed = 20f;
-    public float moveSpeed = 1f;
+    public float moveSpeed = 10f;
     public float JumpForce = 10f;
+    public float GravityModifier = 1f;
+    private float _horizontalInput;
+    private float _forwardInput;
     public bool IsOnGround = true;
     Vector3 m_Movement;
     Rigidbody m_Rigidbody;
@@ -42,5 +45,9 @@ public class PlayerMovement : MonoBehaviour
             m_Rigidbody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
             IsOnGround = false;
         }
+
+        Vector3 movement = new Vector3(_horizontalInput, 0.0f, _forwardInput);
+
+        m_Rigidbody.AddForce(movement * moveSpeed);
     }
 }
