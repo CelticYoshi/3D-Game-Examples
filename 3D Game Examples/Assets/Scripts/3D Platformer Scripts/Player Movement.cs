@@ -9,9 +9,12 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 1f;
     public float JumpForce = 10f;
     public float GravityModifier = 1f;
+    public float OutofBounds = -10f;
     private float _horizontalInput;
     private float _forwardInput;
     public bool IsOnGround = true;
+    private bool _isAtCheckpoint = false;
+    private Vector3 _startingPosition;
     Vector3 m_Movement;
     Rigidbody m_Rigidbody;
     Quaternion m_Rotation = Quaternion.identity;
@@ -21,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         Physics.gravity *= GravityModifier;
+        _startingPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -28,13 +32,13 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
-        if (Input.GetKeyDown(KeyCode.Space) && IsOnGround)
+        
+        if(Input.GetKeyDown(KeyCode.Space) && IsOnGround)
         {
             m_Rigidbody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
             IsOnGround = false;
         }
-
+        
         m_Movement.Set(horizontal, 0f, vertical);
         m_Movement.Normalize();
 
@@ -47,6 +51,13 @@ public class PlayerMovement : MonoBehaviour
 
         m_Rigidbody.MovePosition(m_Rigidbody.position + m_Movement * moveSpeed * Time.deltaTime);
         m_Rigidbody.MoveRotation(m_Rotation);
+
+        if(transform.position.y < OutofBounds)
+        {
+            {
+                transform.position = _startingPosition;
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -54,6 +65,22 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             IsOnGround = true;
+        }
+        
+        if(collision.gameObject.CompareTag("Dead Zone"))
+        {
+            {
+                transform.position = _startingPosition;
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Endpoint"))
+        {
+            _isAtCheckpoint = false;
+            transform.position = _startingPosition;
         }
     }
 }
