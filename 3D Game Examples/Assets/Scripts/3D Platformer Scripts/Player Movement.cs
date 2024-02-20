@@ -27,17 +27,20 @@ public class PlayerMovement : MonoBehaviour
         _startingPosition = transform.position;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        
         if(Input.GetKeyDown(KeyCode.Space) && IsOnGround)
         {
             m_Rigidbody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
             IsOnGround = false;
         }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
         
         m_Movement.Set(horizontal, 0f, vertical);
         m_Movement.Normalize();
