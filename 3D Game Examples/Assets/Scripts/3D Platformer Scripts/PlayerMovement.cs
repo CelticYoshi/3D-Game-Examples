@@ -78,6 +78,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public bool IsPlayerOnGround()
+    {
+        return IsOnGround;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Endpoint"))
