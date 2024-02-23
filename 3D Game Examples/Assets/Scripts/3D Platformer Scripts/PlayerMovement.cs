@@ -87,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Endpoint"))
         {
-            _isAtCheckpoint = false;
             transform.position = _startingPosition;
         }
     }
