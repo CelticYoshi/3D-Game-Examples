@@ -6,19 +6,21 @@ using System;
 
 public class Timer : MonoBehaviour
 {
-    public float timeRemaining = 180f;
+    public float timeRemaining = 240f;
     public bool timerIsRunning = false;
     public TextMeshProUGUI timerText;
 
     // Start is called before the first frame update
     void Start()
     {
-        timerIsRunning = true;
+        //timerIsRunning = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(timerIsRunning)
+        {
         if(timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
@@ -28,6 +30,8 @@ public class Timer : MonoBehaviour
         {
             timeRemaining = 0;
             timerIsRunning = false;
+            GameObject.Find("Game Session").GetComponent<SceneFader>().FadeInUI(); 
+        }
         }
     }
 
@@ -37,5 +41,12 @@ public class Timer : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);    }
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);    
+    }
+
+    public void StartGameTimer()
+    {
+        timerIsRunning = true;
+        timeRemaining = 240;
+    }
 }
