@@ -32114,7 +32114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 20
-  moveSpeed: 5
+  moveSpeed: 6
   JumpForce: 7
   GravityModifier: 1
   OutofBounds: -10
@@ -44214,7 +44214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93390144332174492b44c806b1325102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 240
+  timeRemaining: 300
   timerIsRunning: 0
   timerText: {fileID: 1517336693}
 --- !u!114 &1494680924
