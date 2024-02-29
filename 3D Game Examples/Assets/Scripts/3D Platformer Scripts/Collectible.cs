@@ -10,17 +10,12 @@ public class Collectible : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Collectible"))
+        if(other.gameObject.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
+            GameObject.Find("Game Session").GetComponent<UIComponents>().UpdateCoinCount();
+            Destroy(this.gameObject);
         }
     }
 }
