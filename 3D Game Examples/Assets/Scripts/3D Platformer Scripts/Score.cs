@@ -32,7 +32,7 @@ public class Score : MonoBehaviour
         _coinCount++;
         DisplayCoinCount();
 
-        if(_coinCount < _amountToOpenTheDoor)
+        if(_coinCount >= _amountToOpenTheDoor)
         {
             GameObject.Find("Door").GetComponent<Doors>().DoorCanBeOpened();
         }
