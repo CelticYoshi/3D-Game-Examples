@@ -14,7 +14,7 @@ public class Collectible : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            GameObject.Find("Game Session").GetComponent<UIComponents>().UpdateCoinCount();
+            GameObject.Find("Game Session").GetComponent<Score>().UpdateCoinCount();
             Destroy(this.gameObject);
         }
     }

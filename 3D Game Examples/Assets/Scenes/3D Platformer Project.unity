@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -598,7 +598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 463efbc961d994a599ca6739e2319529, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100
+      value: 100.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 463efbc961d994a599ca6739e2319529, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9957,7 +9957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3585d0365dc8f4ba6ab425f20d8c43d8, type: 3}
       propertyPath: m_Name
-      value: Door_B
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3585d0365dc8f4ba6ab425f20d8c43d8, type: 3}
       propertyPath: m_TagString
@@ -9970,6 +9970,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3585d0365dc8f4ba6ab425f20d8c43d8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 334822694}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3585d0365dc8f4ba6ab425f20d8c43d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 334822697}
   m_SourcePrefab: {fileID: 100100000, guid: 3585d0365dc8f4ba6ab425f20d8c43d8, type: 3}
 --- !u!4 &334822692 stripped
 Transform:
@@ -10002,6 +10005,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6000005, y: 2.8000002, z: 0.53569347}
   m_Center: {x: -0.7999999, y: 1.4000001, z: 0.117846556}
+--- !u!114 &334822697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334822693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc709fb0549a34099b734601e0588bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &337332785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25114,7 +25129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &827443483
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33348,11 +33363,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1134414311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cd8c4faad55c478eb639e4d848a2606, type: 3}
+  m_Script: {fileID: 11500000, guid: 64807c9eff539fa4c8dee48e3d6fcf01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 204800716}
-  score: 0
+  _amountToOpenTheDoor: 39
+  _coinCount: 0
 --- !u!1001 &1138233446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44711,7 +44727,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b3969219f77c1440a96dab5ef2d7c57f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1590614266}
   m_SourcePrefab: {fileID: 100100000, guid: b3969219f77c1440a96dab5ef2d7c57f, type: 3}
 --- !u!4 &1448381264 stripped
 Transform:
@@ -45852,7 +45871,6 @@ GameObject:
   - component: {fileID: 1494680923}
   - component: {fileID: 1494680924}
   - component: {fileID: 1494680925}
-  - component: {fileID: 1494680926}
   m_Layer: 0
   m_Name: Game Session
   m_TagString: Untagged
@@ -45914,23 +45932,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1494680921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cd8c4faad55c478eb639e4d848a2606, type: 3}
+  m_Script: {fileID: 11500000, guid: 64807c9eff539fa4c8dee48e3d6fcf01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 204800716}
-  score: 0
---- !u!114 &1494680926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1494680921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5351f8696ba64962b1c35c2f2037122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _amountToOpenTheDoor: 39
+  _coinCount: 0
 --- !u!1001 &1496066567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49670,6 +49677,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 1, z: 4}
   m_Center: {x: 0, y: 0.5000001, z: 0}
+--- !u!1 &1590614263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b3969219f77c1440a96dab5ef2d7c57f, type: 3}
+  m_PrefabInstance: {fileID: 1448381263}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1590614266
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590614263}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9139091897953597641, guid: b3969219f77c1440a96dab5ef2d7c57f, type: 3}
 --- !u!1 &1590848537 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 463efbc961d994a599ca6739e2319529, type: 3}

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Doors : MonoBehaviour
 {
     Vector3 _pivotPoint;
-    bool _isDoorOpen;
+    bool _isDoorOpen = false;
     bool _canDoorOpen;
     // Start is called before the first frame update
     void Start()
@@ -19,12 +19,11 @@ public class Door : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision Collision)
     {
-        if(other.CompareTag("Player") && !_isDoorOpen)
+        if(Collision.gameObject.CompareTag("Player") && !_isDoorOpen)
         {
-            transform.RotateAround(_pivotPoint, Vector3.up, -90);
-            _isDoorOpen = true;
+            OpenTheDoor();
         }
     }
 
@@ -37,5 +36,5 @@ public class Door : MonoBehaviour
     public void DoorCanBeOpened()
     {
         _canDoorOpen = true;
-    }
+    }    
 }
