@@ -6,7 +6,7 @@ using TMPro;
 public class Score : MonoBehaviour
 {
     [SerializeField] public TextMeshProUGUI scoreText;
-    [SerializeField] public int _amountToOpenTheDoor = 39;
+    [SerializeField] private int _amountToOpenTheDoor = 40;
     [SerializeField] public int _coinCount = 0;
 
     // Start is called before the first frame update
@@ -32,7 +32,7 @@ public class Score : MonoBehaviour
         _coinCount++;
         DisplayCoinCount();
 
-        if(_coinCount >= _amountToOpenTheDoor)
+        if(_coinCount < _amountToOpenTheDoor)
         {
             GameObject.Find("Door").GetComponent<Doors>().DoorCanBeOpened();
         }

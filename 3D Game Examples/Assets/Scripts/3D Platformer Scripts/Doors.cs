@@ -5,7 +5,7 @@ using UnityEngine;
 public class Doors : MonoBehaviour
 {
     Vector3 _pivotPoint;
-    bool _isDoorOpen = false;
+    bool _isDoorOpen;
     bool _canDoorOpen;
     // Start is called before the first frame update
     void Start()
@@ -21,9 +21,10 @@ public class Doors : MonoBehaviour
 
     void OnCollisionEnter(Collision Collision)
     {
-        if(Collision.gameObject.CompareTag("Player") && !_isDoorOpen)
+        if(Collision.gameObject.CompareTag("Player") && !_isDoorOpen && _canDoorOpen)
         {
-            OpenTheDoor();
+            transform.RotateAround(_pivotPoint, Vector3.up, -90);
+            _isDoorOpen = true;
         }
     }
 

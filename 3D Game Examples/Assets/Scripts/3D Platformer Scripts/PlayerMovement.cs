@@ -88,6 +88,10 @@ public class PlayerMovement : MonoBehaviour
         if(other.gameObject.CompareTag("Endpoint"))
         {
             transform.position = _startingPosition;
+            GameObject.Find("Game Session").GetComponent<SceneFader>().FadeInUI();
+            GameObject.Find("Game Session").GetComponent<Timer>().timeRemaining = 300;
+            GameObject.Find("Game Session").GetComponent<Score>()._coinCount = 0;
+            GameObject.Find("Game Session").GetComponent<Score>().DisplayCoinCount();
         }
     }
 }
